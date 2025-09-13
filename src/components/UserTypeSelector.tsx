@@ -19,7 +19,7 @@ const UserTypeSelector = ({ onSelectUserType }: UserTypeSelectorProps) => {
           <Card className="cursor-pointer hover:bg-accent transition-colors" onClick={() => onSelectUserType('common')}>
             <CardHeader className="text-center">
               <User className="mx-auto h-12 w-12 text-primary" />
-              <CardTitle>Common Local User</CardTitle>
+              <CardTitle>Citizen</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground text-center">
