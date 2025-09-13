@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Shield } from "lucide-react";
+import { Users, Shield, User } from "lucide-react";
 
 interface UserTypeSelectorProps {
-  onSelectUserType: (type: 'citizen' | 'government') => void;
+  onSelectUserType: (type: 'citizen' | 'government' | 'common') => void;
 }
 
 const UserTypeSelector = ({ onSelectUserType }: UserTypeSelectorProps) => {
@@ -16,6 +16,18 @@ const UserTypeSelector = ({ onSelectUserType }: UserTypeSelectorProps) => {
         </div>
         
         <div className="grid gap-4">
+          <Card className="cursor-pointer hover:bg-accent transition-colors" onClick={() => onSelectUserType('common')}>
+            <CardHeader className="text-center">
+              <User className="mx-auto h-12 w-12 text-primary" />
+              <CardTitle>Common Local User</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground text-center">
+                Get emergency alerts and access community updates
+              </p>
+            </CardContent>
+          </Card>
+
           <Card className="cursor-pointer hover:bg-accent transition-colors" onClick={() => onSelectUserType('citizen')}>
             <CardHeader className="text-center">
               <Users className="mx-auto h-12 w-12 text-primary" />

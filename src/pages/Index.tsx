@@ -4,11 +4,14 @@ import CitizenDashboard from "@/components/citizen/CitizenDashboard";
 import ReportEmergency from "@/components/citizen/ReportEmergency";
 import CommunityUpdates from "@/components/citizen/CommunityUpdates";
 import ThreatHeatmap from "@/components/citizen/ThreatHeatmap";
+import CommonDashboard from "@/components/common/CommonDashboard";
+import CommonCommunityUpdates from "@/components/common/CommonCommunityUpdates";
+import CommonThreatHeatmap from "@/components/common/CommonThreatHeatmap";
 import GovernmentDashboard from "@/components/government/GovernmentDashboard";
 import ResourceAllocation from "@/components/government/ResourceAllocation";
 import SendAlert from "@/components/government/SendAlert";
 
-type UserType = 'citizen' | 'government' | null;
+type UserType = 'citizen' | 'government' | 'common' | null;
 type CurrentPage = 'dashboard' | 'report' | 'community' | 'heatmap' | 'government-heatmap' | 'resource-allocation' | 'send-alert' | 'verification';
 
 const Index = () => {
@@ -57,6 +60,19 @@ const Index = () => {
         return <SendAlert onBack={handleBack} />;
       default:
         return <GovernmentDashboard onNavigate={handleNavigation} />;
+    }
+  }
+
+  if (userType === 'common') {
+    switch (currentPage) {
+      case 'report':
+        return <ReportEmergency onBack={handleBack} />;
+      case 'community':
+        return <CommonCommunityUpdates onBack={handleBack} />;
+      case 'heatmap':
+        return <CommonThreatHeatmap onBack={handleBack} />;
+      default:
+        return <CommonDashboard onNavigate={handleNavigation} />;
     }
   }
 
